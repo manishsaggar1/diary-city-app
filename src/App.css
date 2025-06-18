@@ -1,0 +1,226 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Flashcard styles */
+.flashcard {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 40px 32px 32px 32px;
+  max-width: 600px;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 32px;
+}
+
+.flashcard-question {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3a4a;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.choices {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.choice-btn {
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 16px;
+  padding: 18px 16px;
+  transition: background 0.2s, border 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  border: 2px solid #ccc;
+  background: #f9f9ff;
+  color: #222;
+  cursor: pointer;
+  text-align: left;
+  word-break: break-word;
+  min-height: 60px;
+  max-height: 120px;
+  overflow: hidden;
+  white-space: normal;
+}
+.choice-btn:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.answer-section {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.next-btn {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 28px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s;
+}
+.next-btn:hover {
+  background: #2563eb;
+}
+
+.flashcard-logo {
+  display: block;
+  margin: 0 auto 16px auto;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: #fff;
+}
+
+.thermometer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 32px;
+}
+.thermometer {
+  width: 24px;
+  height: 200px;
+  background: #e0e0e0;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.thermometer-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #4f8cff 0%, #2ecc40 100%);
+  border-radius: 0 0 16px 16px;
+  transition: height 0.3s;
+}
+.thermometer-label {
+  font-size: 1.1rem;
+  color: #2563eb;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Points display */
+.points-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.points {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3a4a;
+}
+
+.points-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Hall of Fame styles */
+.hall-of-fame {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.hall-of-fame h3 {
+  color: #2d3a4a;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.hall-of-fame-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #eee;
+  transition: transform 0.2s;
+}
+
+.hall-of-fame-entry:hover {
+  transform: translateX(4px);
+}
+
+.hall-of-fame-entry.first {
+  background: #fff8e1;
+  border-color: #ffd700;
+}
+
+.hall-of-fame-name {
+  font-weight: 600;
+  color: #2d3a4a;
+}
+
+.hall-of-fame-score {
+  color: #4f8cff;
+  font-weight: 600;
+}
+
+.hall-of-fame-date {
+  color: #888;
+  font-size: 0.9rem;
+}
