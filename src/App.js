@@ -30,6 +30,9 @@ function App() {
   const [difficulty, setDifficulty] = useState('Easy');
   const [playerName, setPlayerName] = useState('');
   const [showNameInput, setShowNameInput] = useState(true);
+  const [showPasswordScreen, setShowPasswordScreen] = useState(true);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [hallOfFame, setHallOfFame] = useState(() => {
     const saved = localStorage.getItem('hallOfFame');
     return saved ? JSON.parse(saved) : [];
@@ -116,11 +119,56 @@ function App() {
     pickRandomQuestion('init');
   }
 
+  function handlePasswordSubmit(e) {
+    e.preventDefault();
+    const correctPassword = process.env.REACT_APP_PASSWORD || 'default123';
+    if (password === correctPassword) {
+      setShowPasswordScreen(false);
+      setPasswordError('');
+    } else {
+      setPasswordError('Incorrect password. Please try again.');
+      setPassword('');
+    }
+  }
+
   function handleNameSubmit(e) {
     e.preventDefault();
     if (playerName.trim()) {
       setShowNameInput(false);
     }
+  }
+
+  if (showPasswordScreen) {
+    return (
+      <div className="App" style={{ minHeight: '100vh', background: '#f0f4ff', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="flashcard">
+          <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Logo" className="flashcard-logo" style={{ width: 160, height: 100, marginBottom: 16 }} />
+          <h2 className="flashcard-question">Enter Password</h2>
+          <form onSubmit={handlePasswordSubmit} style={{ width: '100%' }}>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              style={{
+                width: '100%',
+                padding: '12px',
+                fontSize: '1.2rem',
+                borderRadius: '12px',
+                border: '2px solid #ccc',
+                marginBottom: '16px'
+              }}
+            />
+            {passwordError && (
+              <p style={{ color: '#e74c3c', marginBottom: '16px', fontSize: '1rem' }}>
+                {passwordError}
+              </p>
+            )}
+            <button type="submit" className="next-btn">Enter</button>
+          </form>
+        </div>
+      </div>
+    );
   }
 
   if (showNameInput) {
