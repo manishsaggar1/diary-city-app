@@ -1,18 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-// Embedded questions data
-const QUESTIONS = [
-  {
-    "Question":"Brahmcharya means what ?",
-    "Answer":"Celibacy, chastity ",
-    "Source":"Seven Paths to Perfection, pg. 12",
-    "Category":"Chastity",
-    "Level":"Difficult"
-  },
-  // ... Add all your questions here
-];
-
 function shuffle(array) {
   let currentIndex = array.length, randomIndex;
   while (currentIndex !== 0) {
@@ -48,7 +36,9 @@ function App() {
   });
 
   useEffect(() => {
-    setQuestions(QUESTIONS);
+    fetch(process.env.PUBLIC_URL + '/questions.json')
+      .then(res => res.json())
+      .then(data => setQuestions(data));
   }, []);
 
   useEffect(() => {
